@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "collection_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "expires_date": {
+                    "description": "Date when this private link should expire - optional. By default private links expire in 365 days.",
+                    "example": "2018-02-22 22:22:22",
+                    "type": "string"
+                },
+                "read_only": {
+                    "description": "Optional, default true. Set to false to give private link users editing rights for this collection.",
+                    "example": true,
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "x-tag": "collections"
+        }
+    }
+}

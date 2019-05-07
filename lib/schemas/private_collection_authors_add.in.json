@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "collection_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "authors": {
+                    "description": "List of authors to be assosciated with the article. The list can contain author ids or author names [{\"id\": 12121}, {\"id\": 34345}, {\"name\": \"John Doe\"}]. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+                    "example": [
+                        {
+                            "id": 12121
+                        },
+                        {
+                            "id": 34345
+                        },
+                        {
+                            "name": "John Doe"
+                        }
+                    ],
+                    "items": {
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "authors"
+            ],
+            "type": "object",
+            "x-tag": "articles"
+        }
+    }
+}

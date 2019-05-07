@@ -1,0 +1,2054 @@
+{
+    "title": "Figshare",
+    "description": "Figshare apiv2. Using Swagger 2.0",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/figshare.com/2.0.0/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.figshare.com/v2",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "OAuth2": {
+                "label": "OAuth2",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://figshare.com/account/applications/authorize",
+            "token_uri": "https://api.figshare.com/v2/token"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "private_account": {
+            "main": "./lib/actions/private_account.js",
+            "title": "Private Account information",
+            "description": "Account information for token/personal token",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_account.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_articles_list": {
+            "main": "./lib/actions/private_articles_list.js",
+            "title": "Private Articles",
+            "description": "Get Own Articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_articles_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_create": {
+            "main": "./lib/actions/private_article_create.js",
+            "title": "Create new Article",
+            "description": "Create a new Article by sending article information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_articles_search": {
+            "main": "./lib/actions/private_articles_search.js",
+            "title": "Private Articles search",
+            "description": "Returns a list of private articles filtered by the search parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_articles_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_delete": {
+            "main": "./lib/actions/private_article_delete.js",
+            "title": "Delete article",
+            "description": "Delete an article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_details": {
+            "main": "./lib/actions/private_article_details.js",
+            "title": "Article details",
+            "description": "View a private article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_update": {
+            "main": "./lib/actions/private_article_update.js",
+            "title": "Update article",
+            "description": "Updating an article by passing body parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_authors_list": {
+            "main": "./lib/actions/private_article_authors_list.js",
+            "title": "List article authors",
+            "description": "List article authors",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_authors_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_authors_add": {
+            "main": "./lib/actions/private_article_authors_add.js",
+            "title": "Add article authors",
+            "description": "Associate new authors with the article. This will add new authors to the list of already associated authors",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_authors_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_authors_replace": {
+            "main": "./lib/actions/private_article_authors_replace.js",
+            "title": "Replace article authors",
+            "description": "Associate new authors with the article. This will remove all already associated authors and add these new ones",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_authors_replace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_author_delete": {
+            "main": "./lib/actions/private_article_author_delete.js",
+            "title": "Delete article author",
+            "description": "De-associate author from article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_author_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_categories_list": {
+            "main": "./lib/actions/private_article_categories_list.js",
+            "title": "List article categories",
+            "description": "List article categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_categories_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_categories_add": {
+            "main": "./lib/actions/private_article_categories_add.js",
+            "title": "Add article categories",
+            "description": "Associate new categories with the article. This will add new categories to the list of already associated categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_categories_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_categories_replace": {
+            "main": "./lib/actions/private_article_categories_replace.js",
+            "title": "Replace article categories",
+            "description": "Associate new categories with the article. This will remove all already associated categories and add these new ones",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_categories_replace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_category_delete": {
+            "main": "./lib/actions/private_article_category_delete.js",
+            "title": "Delete article category",
+            "description": "De-associate category from article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_category_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_confidentiality_delete": {
+            "main": "./lib/actions/private_article_confidentiality_delete.js",
+            "title": "Delete article confidentiality",
+            "description": "Delete confidentiality settings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_confidentiality_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_confidentiality_details": {
+            "main": "./lib/actions/private_article_confidentiality_details.js",
+            "title": "Article confidentiality details",
+            "description": "View confidentiality settings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_confidentiality_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_confidentiality_update": {
+            "main": "./lib/actions/private_article_confidentiality_update.js",
+            "title": "Update article confidentiality",
+            "description": "Update confidentiality settings",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_confidentiality_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_embargo_delete": {
+            "main": "./lib/actions/private_article_embargo_delete.js",
+            "title": "Delete Article Embargo",
+            "description": "Will lift the embargo for the specified article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_embargo_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_embargo_details": {
+            "main": "./lib/actions/private_article_embargo_details.js",
+            "title": "Article Embargo Details",
+            "description": "View a private article embargo details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_embargo_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_embargo_update": {
+            "main": "./lib/actions/private_article_embargo_update.js",
+            "title": "Update Article Embargo",
+            "description": "Note: setting an article under whole embargo does not imply that the article will be published when the embargo will expire. You must explicitly call the publish endpoint to enable this functionality.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_embargo_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_files_list": {
+            "main": "./lib/actions/private_article_files_list.js",
+            "title": "List article files",
+            "description": "List private files",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_files_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_upload_initiate": {
+            "main": "./lib/actions/private_article_upload_initiate.js",
+            "title": "Initiate Upload",
+            "description": "Initiate new file upload within the article. Either use link to provide only an existing file that will not be uploaded on figshare or use the other 3 parameters(md5, name, size)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_upload_initiate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_file_delete": {
+            "main": "./lib/actions/private_article_file_delete.js",
+            "title": "File Delete",
+            "description": "Complete file upload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_file_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_file": {
+            "main": "./lib/actions/private_article_file.js",
+            "title": "Single File",
+            "description": "View details of file for specified article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_file.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_upload_complete": {
+            "main": "./lib/actions/private_article_upload_complete.js",
+            "title": "Complete Upload",
+            "description": "Complete file upload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_upload_complete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_private_link": {
+            "main": "./lib/actions/private_article_private_link.js",
+            "title": "List private links",
+            "description": "List private links",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_private_link.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_private_link_create": {
+            "main": "./lib/actions/private_article_private_link_create.js",
+            "title": "Create private link",
+            "description": "Create new private link for this article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_private_link_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_private_link_delete": {
+            "main": "./lib/actions/private_article_private_link_delete.js",
+            "title": "Disable private link",
+            "description": "Disable/delete private link for this article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_private_link_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_private_link_update": {
+            "main": "./lib/actions/private_article_private_link_update.js",
+            "title": "Update private link",
+            "description": "Update existing private link for this article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_private_link_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_publish": {
+            "main": "./lib/actions/private_article_publish.js",
+            "title": "Private Article Publish",
+            "description": "- If the whole article is under embargo, it will not be published immediatly, but when the embargo expires or is lifted.\n- When an article is published, a new public version will be generated. Any further updates to the article will affect the private article data. In order to make these changes publicly visible, an explicit publish operation is needed.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_publish.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_article_reserve_doi": {
+            "main": "./lib/actions/private_article_reserve_doi.js",
+            "title": "Private Article Reserve DOI",
+            "description": "Reserve DOI for article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_article_reserve_doi.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_authors_search": {
+            "main": "./lib/actions/private_authors_search.js",
+            "title": "Search Authors",
+            "description": "Search for authors",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_authors_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_author_details": {
+            "main": "./lib/actions/private_author_details.js",
+            "title": "Author details",
+            "description": "View author details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_author_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_categories_list": {
+            "main": "./lib/actions/private_categories_list.js",
+            "title": "Private Account Categories",
+            "description": "List institution categories (including parent Categories)",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_categories_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collections_list": {
+            "main": "./lib/actions/private_collections_list.js",
+            "title": "Private Collections List",
+            "description": "List private collections",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collections_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_create": {
+            "main": "./lib/actions/private_collection_create.js",
+            "title": "Create collection",
+            "description": "Create a new Collection by sending collection information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collections_search": {
+            "main": "./lib/actions/private_collections_search.js",
+            "title": "Private Collections Search",
+            "description": "Returns a list of private Collections",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collections_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_delete": {
+            "main": "./lib/actions/private_collection_delete.js",
+            "title": "Delete collection",
+            "description": "Delete n collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_details": {
+            "main": "./lib/actions/private_collection_details.js",
+            "title": "Collection details",
+            "description": "View a collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_update": {
+            "main": "./lib/actions/private_collection_update.js",
+            "title": "Update collection",
+            "description": "Update collection details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_articles_list": {
+            "main": "./lib/actions/private_collection_articles_list.js",
+            "title": "List collection articles",
+            "description": "List collection articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_articles_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_articles_add": {
+            "main": "./lib/actions/private_collection_articles_add.js",
+            "title": "Add collection articles",
+            "description": "Associate new articles with the collection. This will add new articles to the list of already associated articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_articles_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_articles_replace": {
+            "main": "./lib/actions/private_collection_articles_replace.js",
+            "title": "Replace collection articles",
+            "description": "Associate new articles with the collection. This will remove all already associated articles and add these new ones",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_articles_replace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_article_delete": {
+            "main": "./lib/actions/private_collection_article_delete.js",
+            "title": "Delete collection article",
+            "description": "De-associate article from collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_article_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_authors_list": {
+            "main": "./lib/actions/private_collection_authors_list.js",
+            "title": "List collection authors",
+            "description": "List collection authors",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_authors_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_authors_add": {
+            "main": "./lib/actions/private_collection_authors_add.js",
+            "title": "Add collection authors",
+            "description": "Associate new authors with the collection. This will add new authors to the list of already associated authors",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_authors_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_authors_replace": {
+            "main": "./lib/actions/private_collection_authors_replace.js",
+            "title": "Replace collection authors",
+            "description": "Associate new authors with the collection. This will remove all already associated authors and add these new ones",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_authors_replace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_author_delete": {
+            "main": "./lib/actions/private_collection_author_delete.js",
+            "title": "Delete collection author",
+            "description": "Delete collection author",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_author_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_categories_list": {
+            "main": "./lib/actions/private_collection_categories_list.js",
+            "title": "List collection categories",
+            "description": "List collection categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_categories_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_categories_add": {
+            "main": "./lib/actions/private_collection_categories_add.js",
+            "title": "Add collection categories",
+            "description": "Associate new categories with the collection. This will add new categories to the list of already associated categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_categories_add.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_categories_replace": {
+            "main": "./lib/actions/private_collection_categories_replace.js",
+            "title": "Replace collection categories",
+            "description": "Associate new categories with the collection. This will remove all already associated categories and add these new ones",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_categories_replace.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_category_delete": {
+            "main": "./lib/actions/private_collection_category_delete.js",
+            "title": "Delete collection category",
+            "description": "De-associate category from collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_category_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_private_links_list": {
+            "main": "./lib/actions/private_collection_private_links_list.js",
+            "title": "List collection private links",
+            "description": "List article private links",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_private_links_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_private_link_create": {
+            "main": "./lib/actions/private_collection_private_link_create.js",
+            "title": "Create collection private link",
+            "description": "Create new private link",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_private_link_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_private_link_delete": {
+            "main": "./lib/actions/private_collection_private_link_delete.js",
+            "title": "Disable private link",
+            "description": "Disable/delete private link for this collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_private_link_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_private_link_update": {
+            "main": "./lib/actions/private_collection_private_link_update.js",
+            "title": "Update collection private link",
+            "description": "Update existing private link for this collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_private_link_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_publish": {
+            "main": "./lib/actions/private_collection_publish.js",
+            "title": "Private Collection Publish",
+            "description": "When a collection is published, a new public version will be generated. Any further updates to the collection will affect the private collection data. In order to make these changes publicly visible, an explicit publish operation is needed.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_publish.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_collection_reserve_doi": {
+            "main": "./lib/actions/private_collection_reserve_doi.js",
+            "title": "Private Collection Reserve DOI",
+            "description": "Reserve DOI for collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_collection_reserve_doi.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_details": {
+            "main": "./lib/actions/private_institution_details.js",
+            "title": "Private Account Institutions",
+            "description": "Account institution details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_accounts_list": {
+            "main": "./lib/actions/private_institution_accounts_list.js",
+            "title": "Private Account Institution Accounts",
+            "description": "Returns the accounts for which the account has administrative privileges (assigned and inherited).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_accounts_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_accounts_create": {
+            "main": "./lib/actions/private_institution_accounts_create.js",
+            "title": "Create new Institution Account",
+            "description": "Create a new Account by sending account information",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_accounts_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_accounts_search": {
+            "main": "./lib/actions/private_institution_accounts_search.js",
+            "title": "Private Account Institution Accounts Search",
+            "description": "Returns the accounts for which the account has administrative privileges (assigned and inherited).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_accounts_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_accounts_update": {
+            "main": "./lib/actions/private_institution_accounts_update.js",
+            "title": "Update Institution Account",
+            "description": "Update Institution Account",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_accounts_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_articles": {
+            "main": "./lib/actions/private_institution_articles.js",
+            "title": "Private Institution Articles",
+            "description": "Get Articles from own institution. User must be administrator of the institution",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_articles.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_groups_list": {
+            "main": "./lib/actions/private_institution_groups_list.js",
+            "title": "Private Account Institution Groups",
+            "description": "Returns the groups for which the account has administrative privileges (assigned and inherited).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_groups_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_roles_list": {
+            "main": "./lib/actions/private_institution_roles_list.js",
+            "title": "Private Account Institution Roles",
+            "description": "Returns the roles available for groups and the institution group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_roles_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_account_group_roles": {
+            "main": "./lib/actions/private_institution_account_group_roles.js",
+            "title": "List Institution Account Group Roles",
+            "description": "List Institution Account Group Roles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_account_group_roles.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_account_group_roles_create": {
+            "main": "./lib/actions/private_institution_account_group_roles_create.js",
+            "title": "Add Institution Account Group Roles",
+            "description": "Add Institution Account Group Roles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_account_group_roles_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_institution_account_group_role_delete": {
+            "main": "./lib/actions/private_institution_account_group_role_delete.js",
+            "title": "Delete Institution Account Group Role",
+            "description": "Delete Institution Account Group Role",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_institution_account_group_role_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_account_institution_user": {
+            "main": "./lib/actions/private_account_institution_user.js",
+            "title": "Private Account Institution User",
+            "description": "Retrieve institution user information using the account_id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_account_institution_user.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_licenses_list": {
+            "main": "./lib/actions/private_licenses_list.js",
+            "title": "Private Account Licenses",
+            "description": "This is a private endpoint that requires OAuth. It will return a list with figshare public licenses AND licenses defined for account's institution.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_licenses_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_projects_list": {
+            "main": "./lib/actions/private_projects_list.js",
+            "title": "Private Projects",
+            "description": "List private projects",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_projects_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_create": {
+            "main": "./lib/actions/private_project_create.js",
+            "title": "Create project",
+            "description": "Create a new project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_projects_search": {
+            "main": "./lib/actions/private_projects_search.js",
+            "title": "Private Projects search",
+            "description": "Search inside the private projects",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_projects_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_delete": {
+            "main": "./lib/actions/private_project_delete.js",
+            "title": "Delete project",
+            "description": "A project can be deleted only if: - it is not public - it does not have public articles.\n\nWhen an individual project is deleted, all the articles are moved to my data of each owner.\n\nWhen a group project is deleted, all the articles and files are deleted as well. Only project owner, group admin and above can delete a project.\n",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_details": {
+            "main": "./lib/actions/private_project_details.js",
+            "title": "View project details",
+            "description": "View a private project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_update": {
+            "main": "./lib/actions/private_project_update.js",
+            "title": "Update project",
+            "description": "Updating an project by passing body parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_articles_list": {
+            "main": "./lib/actions/private_project_articles_list.js",
+            "title": "List project articles",
+            "description": "List project articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_articles_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_articles_create": {
+            "main": "./lib/actions/private_project_articles_create.js",
+            "title": "Create project article",
+            "description": "Create a new Article and associate it with this project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_articles_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_article_delete": {
+            "main": "./lib/actions/private_project_article_delete.js",
+            "title": "Delete project article",
+            "description": "Delete project article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_article_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_article_details": {
+            "main": "./lib/actions/private_project_article_details.js",
+            "title": "Project article details",
+            "description": "Project article details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_article_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_article_files": {
+            "main": "./lib/actions/private_project_article_files.js",
+            "title": "Project article list files",
+            "description": "List article files",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_article_files.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_article_file": {
+            "main": "./lib/actions/private_project_article_file.js",
+            "title": "Project article file details",
+            "description": "Project article file details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_article_file.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_collaborators_list": {
+            "main": "./lib/actions/private_project_collaborators_list.js",
+            "title": "List project collaborators",
+            "description": "List Project collaborators and invited users",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_collaborators_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_collaborators_invite": {
+            "main": "./lib/actions/private_project_collaborators_invite.js",
+            "title": "Invite project collaborators",
+            "description": "Invite users to collaborate on project or view the project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_collaborators_invite.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_collaborator__Delete": {
+            "main": "./lib/actions/private_project_collaborator__Delete.js",
+            "title": "Remove project collaborator",
+            "description": "Remove project collaborator",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_collaborator__Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_leave": {
+            "main": "./lib/actions/private_project_leave.js",
+            "title": "Private Project Leave",
+            "description": "Please note: project's owner cannot leave the project.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_leave.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_notes_list": {
+            "main": "./lib/actions/private_project_notes_list.js",
+            "title": "List project notes",
+            "description": "List project notes",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_notes_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_notes_create": {
+            "main": "./lib/actions/private_project_notes_create.js",
+            "title": "Create project note",
+            "description": "Create a new project note",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_notes_create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_note_delete": {
+            "main": "./lib/actions/private_project_note_delete.js",
+            "title": "Delete project note",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_note_delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_note": {
+            "main": "./lib/actions/private_project_note.js",
+            "title": "Project note details",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_note.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_note_update": {
+            "main": "./lib/actions/private_project_note_update.js",
+            "title": "Update project note",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_note_update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "private_project_publish": {
+            "main": "./lib/actions/private_project_publish.js",
+            "title": "Private Project Publish",
+            "description": "Publish a project. Possible after all items inside it are public",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/private_project_publish.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "articles_list": {
+            "main": "./lib/actions/articles_list.js",
+            "title": "Public Articles",
+            "description": "Returns a list of public articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/articles_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "articles_search": {
+            "main": "./lib/actions/articles_search.js",
+            "title": "Public Articles Search",
+            "description": "Returns a list of public articles, filtered by the search parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/articles_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "article_details": {
+            "main": "./lib/actions/article_details.js",
+            "title": "View article details",
+            "description": "View an article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/article_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "article_files": {
+            "main": "./lib/actions/article_files.js",
+            "title": "List article files",
+            "description": "Files list for article",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/article_files.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "article_file_details": {
+            "main": "./lib/actions/article_file_details.js",
+            "title": "Article file details",
+            "description": "File by id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/article_file_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "article_versions": {
+            "main": "./lib/actions/article_versions.js",
+            "title": "List article versions",
+            "description": "List public article versions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/article_versions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "article_version_details": {
+            "main": "./lib/actions/article_version_details.js",
+            "title": "Article details for version",
+            "description": "Article with specified version",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/article_version_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "article_version_confidentiality": {
+            "main": "./lib/actions/article_version_confidentiality.js",
+            "title": "Public Article Confidentiality for article version",
+            "description": "Confidentiality for article version",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/article_version_confidentiality.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "article_version_embargo": {
+            "main": "./lib/actions/article_version_embargo.js",
+            "title": "Public Article Embargo for article version",
+            "description": "Embargo for article version",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/article_version_embargo.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "categories_list": {
+            "main": "./lib/actions/categories_list.js",
+            "title": "Public Categories",
+            "description": "Returns a list of public categories",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/categories_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "collections_list": {
+            "main": "./lib/actions/collections_list.js",
+            "title": "Public Collections",
+            "description": "Returns a list of public collections",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/collections_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "collections_search": {
+            "main": "./lib/actions/collections_search.js",
+            "title": "Public Collections Search",
+            "description": "Returns a list of public collections",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/collections_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "collection_details": {
+            "main": "./lib/actions/collection_details.js",
+            "title": "Collection details",
+            "description": "View a collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/collection_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "collection_articles": {
+            "main": "./lib/actions/collection_articles.js",
+            "title": "Public Collection Articles",
+            "description": "Returns a list of public collection articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/collection_articles.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "collection_versions": {
+            "main": "./lib/actions/collection_versions.js",
+            "title": "Collection Versions list",
+            "description": "Returns a list of public collection Versions",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/collection_versions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "collection_version_details": {
+            "main": "./lib/actions/collection_version_details.js",
+            "title": "Collection Version details",
+            "description": "View details for a certain version of a collection",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/collection_version_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "file_download": {
+            "main": "./lib/actions/file_download.js",
+            "title": "Public File Download",
+            "description": "Starts the download of a file",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/file_download.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "institution_hrfeed_upload": {
+            "main": "./lib/actions/institution_hrfeed_upload.js",
+            "title": "Private Institution HRfeed Upload",
+            "description": "More info in the <a href=\"#hr_feed\">HR Feed section</a>",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/institution_hrfeed_upload.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "institution_articles": {
+            "main": "./lib/actions/institution_articles.js",
+            "title": "Public Licenses",
+            "description": "Returns a list of articles belonging to the institution",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/institution_articles.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "licenses_list": {
+            "main": "./lib/actions/licenses_list.js",
+            "title": "Public Licenses",
+            "description": "Returns a list of public licenses",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/licenses_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "projects_list": {
+            "main": "./lib/actions/projects_list.js",
+            "title": "Public Projects",
+            "description": "Returns a list of public projects",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/projects_list.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "projects_search": {
+            "main": "./lib/actions/projects_search.js",
+            "title": "Public Projects Search",
+            "description": "Returns a list of public articles",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/projects_search.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "project_details": {
+            "main": "./lib/actions/project_details.js",
+            "title": "Public Project",
+            "description": "View a project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/project_details.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "project_articles": {
+            "main": "./lib/actions/project_articles.js",
+            "title": "Public Project Articles",
+            "description": "List articles in project",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/project_articles.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

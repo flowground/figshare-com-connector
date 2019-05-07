@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "account_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "group_id": {
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "is_active": {
+                    "description": "Is account active",
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "x-tag": "institutions"
+        }
+    }
+}

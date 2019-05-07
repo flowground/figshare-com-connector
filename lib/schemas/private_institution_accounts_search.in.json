@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "email": {
+                    "description": "filter by email",
+                    "example": "alan@institution.com",
+                    "type": "string"
+                },
+                "institution_user_id": {
+                    "description": "filter by institution_user_id",
+                    "example": "alan",
+                    "type": "string"
+                },
+                "is_active": {
+                    "description": "Filter by active status",
+                    "format": "int64",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "integer"
+                },
+                "limit": {
+                    "description": "Number of results included on a page. Used for pagination with query",
+                    "example": 10,
+                    "format": "int64",
+                    "maximum": 1000,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "offset": {
+                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                    "example": 1,
+                    "format": "int64",
+                    "maximum": 5000,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "page": {
+                    "description": "Page number. Used for pagination with page_size",
+                    "example": 1,
+                    "format": "int64",
+                    "maximum": 5000,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "page_size": {
+                    "default": 10,
+                    "description": "The number of results included on a page. Used for pagination with page",
+                    "example": 10,
+                    "format": "int64",
+                    "maximum": 1000,
+                    "minimum": 1,
+                    "type": "integer"
+                },
+                "search_for": {
+                    "description": "Search term",
+                    "example": "figshare",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "x-tag": "institutions"
+        }
+    }
+}

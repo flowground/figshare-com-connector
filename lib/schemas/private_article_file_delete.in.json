@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "article_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "file_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        }
+    }
+}

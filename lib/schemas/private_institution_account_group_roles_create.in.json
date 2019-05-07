@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "account_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "example": {
+                "2": [
+                    2,
+                    7
+                ],
+                "3": [
+                    7,
+                    9
+                ]
+            },
+            "properties": {},
+            "type": "object",
+            "x-tag": "institutions"
+        }
+    }
+}

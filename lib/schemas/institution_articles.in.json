@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "institution_string_id": {
+            "required": true,
+            "type": "string"
+        },
+        "resource_id": {
+            "required": true,
+            "type": "string"
+        },
+        "filename": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

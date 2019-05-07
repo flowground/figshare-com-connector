@@ -1,0 +1,26 @@
+{
+    "type": "object",
+    "properties": {
+        "article_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "link_id": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "expires_date": {
+                    "description": "Date when this private link should expire - optional. By default private links expire in 365 days.",
+                    "example": "2018-02-22 22:22:22",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "x-tag": "articles"
+        }
+    }
+}

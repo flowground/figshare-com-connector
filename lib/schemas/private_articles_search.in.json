@@ -1,0 +1,134 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "properties": {
+                                "group": {
+                                    "description": "only return collections from this group",
+                                    "example": 2000013,
+                                    "format": "int64",
+                                    "type": "integer"
+                                },
+                                "institution": {
+                                    "description": "only return collections from this institution",
+                                    "example": 2000013,
+                                    "format": "int64",
+                                    "type": "integer"
+                                },
+                                "limit": {
+                                    "description": "Number of results included on a page. Used for pagination with query",
+                                    "example": 10,
+                                    "format": "int64",
+                                    "maximum": 1000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                "modified_since": {
+                                    "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD",
+                                    "example": "2017-12-22",
+                                    "type": "string"
+                                },
+                                "offset": {
+                                    "description": "Where to start the listing(the offset of the first result). Used for pagination with limit",
+                                    "example": 1,
+                                    "format": "int64",
+                                    "maximum": 5000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                "order": {
+                                    "default": "published_date",
+                                    "description": "The field by which to order. Default varies by endpoint/resource.",
+                                    "enum": [
+                                        "published_date",
+                                        "modified_date",
+                                        "views",
+                                        "shares",
+                                        "downloads",
+                                        "cites"
+                                    ],
+                                    "example": "published_date",
+                                    "type": "string"
+                                },
+                                "order_direction": {
+                                    "default": "desc",
+                                    "description": "Direction of ordering",
+                                    "enum": [
+                                        "asc",
+                                        "desc"
+                                    ],
+                                    "example": "desc",
+                                    "type": "string"
+                                },
+                                "page": {
+                                    "description": "Page number. Used for pagination with page_size",
+                                    "example": 1,
+                                    "format": "int64",
+                                    "maximum": 5000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                "page_size": {
+                                    "default": 10,
+                                    "description": "The number of results included on a page. Used for pagination with page",
+                                    "example": 10,
+                                    "format": "int64",
+                                    "maximum": 1000,
+                                    "minimum": 1,
+                                    "type": "integer"
+                                },
+                                "published_since": {
+                                    "description": "Filter by article publishing date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD",
+                                    "example": "2017-12-22",
+                                    "type": "string"
+                                },
+                                "search_for": {
+                                    "description": "Search term",
+                                    "example": "figshare",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-tag": "common"
+                        }
+                    ],
+                    "properties": {
+                        "doi": {
+                            "description": "only return collections with this doi",
+                            "example": "10.6084/m9.figshare.1407024",
+                            "type": "string"
+                        },
+                        "item_type": {
+                            "description": "Only return collections with the respective type. Mapping for item_type is: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
+                            "example": 1,
+                            "format": "int64",
+                            "maximum": 12,
+                            "minimum": 1,
+                            "type": "integer"
+                        },
+                        "resource_doi": {
+                            "description": "only return collections with this resource_doi",
+                            "example": "10.6084/m9.figshare.1407024",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "x-tag": "articles"
+                }
+            ],
+            "properties": {
+                "resource_id": {
+                    "description": "only return collections with this resource_id",
+                    "example": "1407024",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "x-tag": "articles"
+        }
+    }
+}

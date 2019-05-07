@@ -1,0 +1,155 @@
+{
+    "type": "object",
+    "properties": {
+        "article_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "authors": {
+                    "default": [],
+                    "description": "List of authors to be assosciated with the article. The list can contain author ids or author names. No more than 10 authors. For adding more authors use the specific authors endpoint.",
+                    "example": [
+                        {
+                            "name": "John Doe"
+                        },
+                        {
+                            "id": 1000008
+                        }
+                    ],
+                    "items": {
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "categories": {
+                    "default": [],
+                    "description": "List of category ids to be associated with the article(e.g [1, 23, 33, 66])",
+                    "example": [
+                        1,
+                        10,
+                        11
+                    ],
+                    "items": {
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                },
+                "custom_fields": {
+                    "description": "List of key, values pairs to be associated with the article",
+                    "example": {
+                        "defined_key": "value for it"
+                    },
+                    "type": "object"
+                },
+                "defined_type": {
+                    "description": "Article type. In responses this will be an integer which is mapped to item types as: 1 - Figure, 2 - Media, 3 - Dataset, 4 - Fileset, 5 - Poster, 6 - Paper, 7 - Presentation, 8 - Thesis, 9 - Code, 11 - Metadata, 12 - Preprint",
+                    "enum": [
+                        "figure",
+                        "media",
+                        "dataset",
+                        "fileset",
+                        "poster",
+                        "paper",
+                        "presentation",
+                        "thesis",
+                        "code",
+                        "metadata",
+                        "preprint"
+                    ],
+                    "example": "media",
+                    "type": "string"
+                },
+                "description": {
+                    "default": "",
+                    "description": "The article description. In a publisher case, usually this is the remote article description",
+                    "example": "Test description of article",
+                    "maxLength": 10000,
+                    "type": "string"
+                },
+                "doi": {
+                    "default": "",
+                    "description": "Not appliable for regular users. In an institutional case, make sure your group supports setting DOIs. This setting is applied by figshare via opening a ticket through our support/helpdesk system.",
+                    "type": "string"
+                },
+                "funding": {
+                    "default": "",
+                    "description": "Grant number or funding authority",
+                    "type": "string"
+                },
+                "group_id": {
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "keywords": {
+                    "default": [],
+                    "description": "List of tags to be associated with the article. Tags can be used instead",
+                    "example": [
+                        "tag1",
+                        "tag2"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "license": {
+                    "default": 0,
+                    "description": "License id for this article.",
+                    "example": 1,
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "references": {
+                    "default": [],
+                    "description": "List of links to be associated with the article (e.g [\"http://link1\", \"http://link2\", \"http://link3\"])",
+                    "example": [
+                        "http://figshare.com",
+                        "http://api.figshare.com"
+                    ],
+                    "items": {
+                        "format": "link",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "resource_doi": {
+                    "default": "",
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article DOI.",
+                    "type": "string"
+                },
+                "resource_title": {
+                    "default": "",
+                    "description": "Not applicable to regular users. In a publisher case, this is the publisher article title.",
+                    "type": "string"
+                },
+                "tags": {
+                    "default": [],
+                    "description": "List of tags to be associated with the article. Keywords can be used instead",
+                    "example": [
+                        "tag1",
+                        "tag2"
+                    ],
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "title": {
+                    "description": "Title of article",
+                    "example": "Test article title",
+                    "maxLength": 500,
+                    "minLength": 3,
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "x-tag": "articles"
+        }
+    }
+}

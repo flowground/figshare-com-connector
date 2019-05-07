@@ -1,0 +1,33 @@
+{
+    "type": "object",
+    "properties": {
+        "collection_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "articles": {
+                    "description": "List of article ids",
+                    "example": [
+                        2000003,
+                        2000004
+                    ],
+                    "items": {
+                        "description": "Id of article",
+                        "format": "int64",
+                        "type": "integer"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "articles"
+            ],
+            "type": "object",
+            "x-tag": "articles"
+        }
+    }
+}

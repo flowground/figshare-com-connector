@@ -1,0 +1,35 @@
+{
+    "type": "object",
+    "properties": {
+        "project_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "description": {
+                    "description": "Project description",
+                    "example": "project description",
+                    "maxLength": 10000,
+                    "type": "string"
+                },
+                "funding": {
+                    "description": "Grant number or organization(s) that funded this project. Up to 2000 characters permitted.",
+                    "example": "",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "The title for this project - mandatory. 3 - 500 characters.",
+                    "example": "project title",
+                    "maxLength": 500,
+                    "minLength": 3,
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "x-tag": "projects"
+        }
+    }
+}

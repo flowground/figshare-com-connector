@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "properties": {
+                "email": {
+                    "description": "Email of account",
+                    "example": "johndoe@example.com",
+                    "maxLength": 150,
+                    "minLength": 3,
+                    "type": "string"
+                },
+                "first_name": {
+                    "default": "",
+                    "description": "First Name",
+                    "example": "John",
+                    "maxLength": 30,
+                    "type": "string"
+                },
+                "group_id": {
+                    "description": "Not applicable to regular users. This field is reserved to institutions/publishers with access to assign to specific groups",
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "institution_user_id": {
+                    "default": "",
+                    "description": "Institution user id",
+                    "example": "johndoe",
+                    "maxLength": 50,
+                    "type": "string"
+                },
+                "is_active": {
+                    "description": "Is account active",
+                    "type": "boolean"
+                },
+                "last_name": {
+                    "default": "",
+                    "description": "Last Name",
+                    "example": "Doe",
+                    "maxLength": 30,
+                    "type": "string"
+                },
+                "quota": {
+                    "description": "Account quota",
+                    "example": 1000,
+                    "format": "int64",
+                    "type": "integer"
+                },
+                "symplectic_user_id": {
+                    "default": "",
+                    "description": "Symplectic user id",
+                    "example": "johndoe",
+                    "maxLength": 50,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "email",
+                "first_name",
+                "last_name"
+            ],
+            "type": "object",
+            "x-tag": "institutions"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "type": "object",
+    "properties": {
+        "article_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "embargo_date": {
+                    "description": "Date when the embargo expires and the article gets published",
+                    "example": "2018-05-22T04:04:04",
+                    "type": "string"
+                },
+                "embargo_reason": {
+                    "description": "Reason for setting embargo",
+                    "example": "",
+                    "type": "string"
+                },
+                "embargo_type": {
+                    "description": "Embargo can be enabled at the article or the file level. Possible values: article, file",
+                    "enum": [
+                        "article",
+                        "file"
+                    ],
+                    "example": "file",
+                    "type": "string"
+                },
+                "is_embargoed": {
+                    "description": "Confidentiality status",
+                    "example": true,
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "x-tag": "articles"
+        }
+    }
+}

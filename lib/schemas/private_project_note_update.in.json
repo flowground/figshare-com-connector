@@ -1,0 +1,32 @@
+{
+    "type": "object",
+    "properties": {
+        "project_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "note_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "text": {
+                    "description": "Text of the note",
+                    "example": "note to remember",
+                    "minLength": 3,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "text"
+            ],
+            "type": "object",
+            "x-tag": "projects"
+        }
+    }
+}

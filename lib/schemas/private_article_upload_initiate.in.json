@@ -1,0 +1,38 @@
+{
+    "type": "object",
+    "properties": {
+        "article_id": {
+            "required": true,
+            "type": "integer",
+            "format": "int64",
+            "minimum": 1
+        },
+        "requestBody": {
+            "properties": {
+                "link": {
+                    "description": "Url for an existing file that will not be uploaded on figshare",
+                    "example": "http://figshare.com/file.txt",
+                    "type": "string"
+                },
+                "md5": {
+                    "description": "MD5 sum pre computed on the client side",
+                    "example": "6c16e6e7d7587bd078e5117dda01d565",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "File name including the extension",
+                    "example": "test.py",
+                    "type": "string"
+                },
+                "size": {
+                    "description": "File size in bytes",
+                    "example": 70,
+                    "format": "int64",
+                    "type": "integer"
+                }
+            },
+            "type": "object",
+            "x-tag": "articles"
+        }
+    }
+}
